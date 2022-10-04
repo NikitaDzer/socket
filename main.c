@@ -44,6 +44,8 @@ int main( const int argc, const char *argv[])
 				break;
 		}
 
+		release_socket( socket);
+
 		return 0;
 	}
 	else
@@ -52,6 +54,16 @@ int main( const int argc, const char *argv[])
 
 		const int fd_input  = open( argv[1], O_RDONLY | 0666);
 		const int fd_output = open( argv[2], O_RDWR   | 0666);
+
+		if ( fd_input == -1 || fd_output == -1 )
+		{
+			release_socket( socket);
+
+			close( fd_input);
+			close( fd_output);
+
+			return 1;
+		}
 
 		while ( true )
 		{

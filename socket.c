@@ -30,6 +30,12 @@ Socket *create_socket( void)
 
 void release_socket( Socket *const socket)
 {
+	close( socket->forward[0]);
+	close( socket->forward[1]);
+
+	close( socket->backward[0]);
+	close( socket->backward[1]);
+
 	free( socket->buffer);
 	free( socket);
 }

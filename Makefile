@@ -1,8 +1,8 @@
 CC = gcc
-CFLAGS = -O2
+CFLAGS = -fsanitize=address -O2
 
 BUILD_DIR = ./build
-EXEC_FILE = raycasting
+EXEC_FILE = socket
 
 
 all: debug
